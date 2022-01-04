@@ -1,0 +1,62 @@
+﻿<Window xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"  xmlns:Obselete="clr-namespace:Xceed.Wpf.Toolkit.Obselete;assembly=Xceed.Wpf.Toolkit"  x:Class="WpfDB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+        MinHeight="800"
+        MinWidth="1000"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Name="MainMenu"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1">
+            <MenuItem Name="SettingsButton" Header="Настройка" Margin="5,0,5,0">
+                <MenuItem Name="RegionButton"           Header="Участок"          Click="RegionButton_Click"></MenuItem>
+                <MenuItem Name="PassageTypeButton"      Header="Отступ"    Click="PassageTypeButton_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Name="InsertButton" Header="Вставить" Margin="5,0,5,0" Click="InsertButton_Click"></MenuItem>
+            <MenuItem Name="DeleteButton" Header="Удалить" Margin="5,0,5,0" Click="DeleteButton_Click"></MenuItem>
+            <MenuItem Name="UpdateButton" Header="Изменить" Margin="5,0,5,0" Click="UpdateButton_Click"></MenuItem>
+        </Menu>
+        <DataGrid Name="mainDataGrid" SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" Margin="5" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1"></DataGrid>
+        <GroupBox Header="Фильтры" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" Grid.RowSpan="1">
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="5" Orientation="Vertical" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Label Width="Auto" Name="startDateLabel" Content="Начальная дата" HorizontalAlignment="Center"/>
+                <DatePicker Name="startDatePicker" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Vertical" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Label Width="Auto" Name="endDateLabel" Content="Конечная дата" HorizontalAlignment="Center"></Label>
+                <DatePicker Name="endDatePicker" VerticalAlignment="Center"/>
+            </StackPanel>
+            <Grid Margin="5" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Name="km_pkSearchLabel" Content="km-pk search" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
+                <Label Name="kmSearchLabel" Content="km search" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
+                <xctk:MaskedTextBox Name="kmSearchMaskedTextBox" Mask="0000" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                <xctk:MaskedTextBox Name="km_pkSearchMaskedTextBox" Mask="0000-0000" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                <Button Name="km_pkButton" Content="Начать поиск" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="km_pkButton_Click"></Button>
+                <Button Name="kmButton" Content="Начать поиск" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="kmButton_Click"></Button>
+            </Grid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
